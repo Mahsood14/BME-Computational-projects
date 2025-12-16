@@ -1,0 +1,44 @@
+import numpy as np
+
+x_points = [1, 3]
+y_points = [1, 3]
+
+
+x1, x2 = x_points
+y1, y2 = y_points
+
+
+z = np.array([[1, x1], [1, x2]])
+y = np.array([y1, y2])
+
+A = np.linalg.solve(z, y)
+
+print("Coefficients (A0, A1):", A)
+
+x_new = 2
+y_new = A[0] + A[1] * x_new
+print(f"Interpolated y value at x={x_new}: {y_new}")
+
+print("A= ", A)
+
+a1, a2 = A
+x_value = 2
+y_value = a1 + a2 + x_value
+print("At x = 2, y =", y_value)
+
+x = np.linespace(0, 5, 100)
+y = a1 + a2 + x
+plt.plot(x,y)
+
+plt.scatter(x_value, y_points, color='blue' , s=60, label='known points')
+
+ply.scatter(x_value, y_value, color='red', zorder=5, label=f'interpoltated point (x={x_value}, y={y_value}')
+
+plt.title('line with interpolated point (red)')
+plt.xlabel('x')
+plt.ylabel('y')
+
+
+
+
+
